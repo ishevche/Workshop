@@ -23,15 +23,15 @@ def check_position(field: list, ships_lst, pos1, pos2):
                             return "Неправильні координати"
                     except IndexError:
                         continue
-    if x0 == x1:
-        for i in range(min(y0, y1), max(y0, y1)+1):
-            field[x0][i] = '-'
-            whole_ship.append((x0, i))
-    if y0 == y1:
-        for i in range(min(x0, x1), max(x0, x1)+1):
-            field[i][y0] = '-'
-            whole_ship.append((i, y0))
-    ships_lst.append(whole_ship)
+                if x0 == x1:
+                    for i in range(min(y0, y1), max(y0, y1)+1):
+                        field[x0][i] = '-'
+                        whole_ship.append((x0, i))
+                if y0 == y1:
+                    for i in range(min(x0, x1), max(x0, x1)+1):
+                        field[i][y0] = '-'
+                        whole_ship.append((i, y0))
+                ships_lst.append(whole_ship)
 
     if result:
         return "Корабель поставлено"
