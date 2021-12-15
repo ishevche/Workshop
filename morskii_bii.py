@@ -17,7 +17,10 @@ def attack_checker(ship_list:list, attaked_pole:list, attacked_cell:tuple):
             last_index=len(ship)-1
             for column in range(ship[0][0]-1, ship[last_index][0]+2):
                 for row in range(ship[0][1]-1, ship[last_index][1]+2):
-                    attaked_pole[column][row]='o'
+                    try:
+                        attaked_pole[column][row]='o'
+                    except IndexError:
+                        continue
             for section in ship:
                 attaked_pole[section[0]][section[1]] = '*'
             #якщо вбило, заповняєм красиво
