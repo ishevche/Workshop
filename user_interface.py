@@ -1,17 +1,26 @@
+"""
+the most important module
+"""
 import re
 
 
-# import check_ship
-# import morskii_bii
+import check_ship
+import morskii_bii
 
 
 def print_intro():
+    """
+    welcome
+    """
     print("""
     Hello! Welcome to Sea Battle game.
     """)
 
 
 def display(field, replace_ship='.'):
+    """
+    shows field for player without displayed ships
+    """
     for row in field:
         for element in row:
             print(element.replace('-', replace_ship), end='')
@@ -19,6 +28,9 @@ def display(field, replace_ship='.'):
 
 
 def settle_up_ships(field, player):
+    """
+    sets ships on their places
+    """
     print(f"""
     Час розставити кораблі гравцю №{player}.
     Кожен раз, ввід має мати вигляд: <col><row> - <col><row>
@@ -32,7 +44,7 @@ def settle_up_ships(field, player):
     regex = re.compile(r'([a-j])(\d)\s*-\s*([a-j])(\d)')
     ships = []
     display(field)
-    while len(ships) < 10:
+    while len(ships) < 3:
         request = input(">>>")
         if not regex.search(request):
             print("""Ввід некоректний!! 
@@ -57,6 +69,9 @@ def settle_up_ships(field, player):
 
 
 def play_game(game_data):
+    """
+    implements playing process
+    """
     cols = 'abcdefghij'
     rows = '0123456789'
     print("Починаємо гру!")
@@ -87,6 +102,9 @@ def play_game(game_data):
 
 
 def end_game(game_data):
+    """
+    ends game?
+    """
     print("Поле першого гравця:")
     display(game_data[0][0], '-')
     print("Поле другого гравця:")
@@ -94,6 +112,9 @@ def end_game(game_data):
 
 
 def main():
+    """
+    calls functions, nothing special
+    """
     print_intro()
     first_field = [['.' for _ in range(10)] for _ in range(10)]
     second_field = [['.' for _ in range(10)] for _ in range(10)]
